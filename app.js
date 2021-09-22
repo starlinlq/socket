@@ -12,7 +12,7 @@ let server = app.listen(process.env.PORT || 3002, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://vigorous-pike-e681a8.netlify.app/",
+    origin: "https://vigorous-pike-e681a8.netlify.app",
   },
 });
 let users = [];
