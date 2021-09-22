@@ -1,8 +1,18 @@
 require("dotenv");
+const express = require("express");
+const cors = require("cors");
+const app = express();
 
-const io = require("socket.io")(process.env.PORT || 3002, {
+//middleware
+app.use(cors());
+
+let server = app.listen(process.env.PORT || 3002, () => {
+  console.log("server running");
+});
+
+const io = require("socket.io")(server, {
   cors: {
-    origin: "https://vigorous-pike-e681a8.netlify.app",
+    origin: "http://localhost:3001",
   },
 });
 let users = [];
