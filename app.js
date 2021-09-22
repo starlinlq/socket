@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
 
   //take userId and socketid from user
   socket.on("sendUser", (user) => {
+    console.log(user);
     addUser(user, socket.id);
     io.emit("getUsers", users);
   });
@@ -34,6 +35,7 @@ io.on("connection", (socket) => {
   //send notification
   socket.on("sendNotification", (notification) => {
     let reciever = getUser(notification.reciever);
+    console.log(reciever);
 
     if (reciever) {
       console.log("heloo");
@@ -51,9 +53,8 @@ io.on("connection", (socket) => {
   //take message from user
   socket.on("sendMessage", ({ sender, recieverId, text }) => {
     const reciver = getUser(recieverId);
-    console.log(users);
+
     if (reciver) {
-      console.log("got it");
       io.to(reciver.socketId).emit("getMessage", {
         sender,
         text,
