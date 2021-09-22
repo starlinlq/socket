@@ -2,7 +2,7 @@ require("dotenv");
 
 const io = require("socket.io")(process.env.PORT || 3002, {
   cors: {
-    origin: "http://localhost:3001",
+    origin: "https://vigorous-pike-e681a8.netlify.app",
   },
 });
 let users = [];
